@@ -10587,15 +10587,22 @@ img::-moz-selection {
   }
 }
 header.masthead  {
-  padding-top: 16.5rem;
-  padding-bottom: 100%;
+   padding-top: 10.5rem;
+  padding-bottom: 6rem;
   text-align: center;
   color: #fff;
   background-image: url("../assets/img/Untitled-1.jpg");
   background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center center;
-  background-size: cover;
+  background-attachment: scroll;
+  background-position: center left;
+  background-size: 100% 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  width: 100%;
+  height:100vh;
+ 
+ 
 }
 header.masthead .masthead-subheading {
   font-size: 1.5rem;
