@@ -1,6 +1,65 @@
 <!DOCTYPE html>
 <html lang="it">
     <head>
+        <script> window.addEventListener('load', function(e) {
+    window.dispatchEvent(new Event('resize'));});
+
+window.addEventListener('resize', function(e) {
+document.documentElement.style.setProperty('--vw', (window.innerWidth * 0.01) + 'px');
+document.documentElement.style.setProperty('--vh', (window.innerHeight * 0.01) + 'px');
+
+});
+function sendEmail(event, lang) {
+
+    event.preventDefault();
+showSnackbar('E-mail inviata con successo');
+}
+            /-- Snackbar --/
+
+var snack = null;
+var snackTimeout = null;
+
+function showSnackbar(message, time = 3000) {
+
+    if (snack == null) {
+
+        createSnackbar();
+
+    }
+
+    clearTimeout(snackTimeout);
+
+    snack.innerHTML = message;
+
+    snack.classList.remove('hide');
+    snack.classList.add('show');
+
+    snackTimeout = setTimeout(closeSnackbar, time);
+
+}
+
+function closeSnackbar() {
+
+    if (snack != null) {
+
+        snack.classList.remove('show');
+        snack.classList.add('hide');
+
+    }
+
+}
+
+function createSnackbar() {
+
+    snack = document.createElement('div');
+
+    snack.id = 'snackbar';
+    snack.innerHTML = 'Empty';
+
+    document.body.appendChild(snack);
+
+}
+        </script> 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
@@ -21,7 +80,14 @@
         <link href="css/styles.css" rel="stylesheet" />
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VSRS8CHHFF"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
+    gtag('config', 'G-VSRS8CHHFF');
+    </script>
 
 
 
@@ -40,28 +106,21 @@
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#page-top">Home</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Servizi">Servizi</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#recensioni">Recensioni </a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">
-                            
-                            
-                            
-                            
-                            
-                            
-                       </a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contattami </a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about"> About </a></li>
                     </ul>
                 </div>
             </div>
         </nav>
         <!-- Masthead-->
-        <header class="masthead">
-            <section class="wrapper">
+        <header class="masthead" style= "height:calc(var(--vh, 1vh) * 100); display: flex; flex-direction: column">
+            <section class="wrapper" style="position: absolute">
                 <div id="stars"></div>
                 <div id="stars2"></div>
-                <div id="stars3"></div>
+                <div style="display:none" id="stars3"></div>
                 </div>
             </section>
-          <div class="container" data-aos="fade-zoom-in" >
+          <div class="container" data-aos="fade-zoom-in" style=" margin: auto;" >
                     <div 
                     
                    class="masthead-subheading">Benvenuti</div>
@@ -74,17 +133,15 @@
 
         <!-- Servizi Grid-->
         <section class="page-section bg-light" id="Servizi">
-            <div 
-             class="container">
+            <div class="container">
                 <div class="text-center">
                     <h2 data-aos="fade-up"
                     data-aos-anchor-placement="bottom-center"  data-aos-once="false" class="section-heading text-uppercase">Servizi</h2>
                     <h3 class="section-subheading text-muted"> </h3>
                 </div>
-                <div class="row" data-aos="flip-left"
-                data-aos-easing="ease-out-cubic" 
-             data-aos-once="false">
-                    <div class="col-lg-4 col-sm-6 mb-4">
+                <div class="row">
+                    <div data-aos="flip-right"
+             data-aos-once="false" class="col-lg-4 col-sm-6 mb-4">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
                                 <div class="portfolio-hover">
@@ -98,13 +155,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-sm-6 mb-4">
+                    <div data-aos="flip-right"
+             data-aos-once="false" class="col-lg-4 col-sm-6 mb-4">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content hey"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid rito" src="assets/img/IMG_9294.jpg" alt="" />
+                                <img class="img-fluid rito" src="assets/img/IMG_9360.jpg" alt="" />
 
                             </a>
                             <div class="portfolio-caption">
@@ -113,7 +171,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-sm-6 mb-4">
+                    <div data-aos="flip-right"
+             data-aos-once="false" class="col-lg-4 col-sm-6 mb-4">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
                                 <div class="portfolio-hover">
@@ -127,7 +186,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
+                    <div data-aos="flip-right"
+             data-aos-once="false" class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
                                 <div class="portfolio-hover">
@@ -141,7 +201,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
+                    <div data-aos="flip-right"
+             data-aos-once="false"class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-toggle="modal" href="#portfolioModal5">
                                 <div class="portfolio-hover">
@@ -155,7 +216,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-sm-6">
+                    <div data-aos="flip-right"
+             data-aos-once="false" class="col-lg-4 col-sm-6">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-toggle="modal" href="#portfolioModal6">
                                 <div class="portfolio-hover">
@@ -237,7 +299,7 @@
                       <p> Soffro da anni di dolori alla schiena che mi rendono difficile compiere certe attività. Mi sono fatta visitare da diversi medici e ho fatto molti esami ma nessuno è stato in grado di aiutarmi. Per questo motivo ho deciso di chiedere a Madame e devo dire che lei solo attraverso una foto riesce a darmi sollievo al dolore. Quando mi tratta ho come la sensazione che qualcuno mi stia mettendo dei sostegni sulla schiena</p><p>E' veramente incredibile</p>
                       <div class="content">
                         <div class="info">
-                          <div class="name">Carmela Bittelli</div>
+                          <div class="name">Carmela Leonardi </div>
                           <div class="stars">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -277,43 +339,43 @@
 
         
         <!-- Contact-->
-        <section class="page-section fare" id="contact" >
+        <section class="page-section" id="contact">
             <div class="container">
-                <div class="text-center">
-                    <h2 data-aos="fade-up"
-                    data-aos-anchor-placement="bottom-center" data-aos-duration="200" data-aos-once="false"  class="section-heading text-uppercase">Contattami</h2>
-                    <h3 class="section-subheading text-muted"></h3>
-                </div>
-                <form id="contactForm" name="sentMessage"> 
-                    <div class="row align-items-stretch mb-5">
-                        <div class="col-md-6">
-                            <div class="form-group" >
-                                <select required name="Servizi" id="service" class="form-control  servizis mb-md-0">
-                                    <option value="" selected disabled hidden> Scegli un Servizio* </option>
-                                    <option value="Reiki">Reiki </option>
-                                    <option value="Stimolazione Neurale">Stimolazione Neurale </option>
-                                    <option value="Lettura"> Segnature</option>
-                                    <option value="Lettura ">Lettura Sibille</option>
-                                    <option value="Lettura"> Lettura Tarocchi</option>
-                                    <option value="Lettura"> Ching</option>
-                                    <option value="Info"> Informazioni </option> 
-                                </select>
-                            </div>
-                            <div class="form-group" >
-                                <input class="form-control" id="email" type="email" placeholder="La tua Email*" required="required" data-validation-required-message="Please enter your email address." />
-                                
-                            </div>
-                            <div class="form-group mb-md-0"   >
-                                <input class="form-control" id="name" type="text" placeholder="Il tuo Nome*" required="required" data-validation-required-message="Please enter your phone number." />
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group form-group-textarea mb-md-0">
-                                <textarea class="form-control" id="message" placeholder="Il tuo Messaggio*" required="required" data-validation-required-message="Please enter a message."></textarea>
-                                
-                            </div>
-                        </div>
+                    <div class="text-center">
+                        <h2 data-aos="fade-up"
+                        data-aos-anchor-placement="bottom-center" data-aos-once="false"  class="section-heading text-uppercase">Contattami</h2>
+                        <h3 class="section-subheading text-muted"></h3>
                     </div>
+                <form id="contactForm" name="sentMessage" onsubmit="sendEmail(event, 'en');" > 
+                            <div class="row align-items-stretch mb-5">
+                                    <div class="col-md-6">
+                                        <div class="form-group" data-aos="fade-right"  data-aos-once="false">
+                                            <select required name="Servizi" id="service" class="form-control  servizis mb-md-0">
+                                                <option value="" selected disabled hidden> Scegli un Servizio* </option>
+                                                <option value="Reiki">Reiki </option>
+                                                <option value="Stimolazione Neurale">Stimolazione Neurale </option>
+                                                <option value="Lettura"> Segnature</option>
+                                                <option value="Lettura ">Lettura Sibille</option>
+                                                <option value="Lettura"> Lettura Tarocchi</option>
+                                                <option value="Lettura"> Ching</option>
+                                                <option value="Info"> Informazioni </option> 
+                                            </select>
+                                        </div>
+                                        <div class="form-group" data-aos="fade-right"  data-aos-once="false">
+                                            <input class="form-control" id="email" type="email" placeholder="La tua Email*" required="required" data-validation-required-message="Please enter your email address." />
+                                              
+                                        </div>
+                                        <div class="form-group mb-md-0" data-aos="fade-right"  data-aos-once="false" >
+                                            <input class="form-control" id="name" type="text" placeholder="Il tuo Nome*" required="required" data-validation-required-message="Please enter your phone number." />
+                                        </div>
+                                    </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-textarea mb-md-0" data-aos="fade-left"  data-aos-once="false">
+                                        <textarea class="form-control" id="message" placeholder="Il tuo Messaggio*" required="required" data-validation-required-message="Please enter a message."></textarea>
+                                        
+                                    </div>
+                                </div>
+                            </div>
                     <div class="text-center">
                         <div id="success"></div>
                         <button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit"  link rel="icon" type="image/x-icon"> Invia
@@ -337,7 +399,7 @@
             <div class="container">
                 <div class="text-center">
                     <h2 data-aos="fade-up"
-                    data-aos-anchor-placement="bottom-center" data-aos-duration="200" data-aos-once="false"  class="section-heading text-uppercase">About</h2>
+                    data-aos-anchor-placement="bottom-center"  data-aos-once="false"  class="section-heading text-uppercase">About</h2>
                     <h3 class="section-subheading text-muted hey">Madame Kifly</h3>
                 </div>
                 <ul class="timeline">
@@ -371,7 +433,7 @@
                                 <h4 class="subheading"></h4>
                             </div>
                             <div>  
-                            <br class="timeline-body"><p data-aos="fade-up-right"  data-aos-once="false"  class="text-muted erco"> Più scoprivo me e quello che mi stava attorno e più mi interessavano le problematiche e le domande che si ponevano gli altri, cercavo di sentire, percepire e ascoltare. </p> <p data-aos="fade-up-right"  data-aos-once="false"  class="text-muted">Questo mi ha portato a riscoprire una forte predisposizione all'ascolto degli altri.  Per la verità mi piacerebbe anche a volte essere ascoltava, ma aimè devo essere noiosa perchè non ho mai trovato un grande pubblico. </p>
+                            <br class="timeline-body"><p data-aos="fade-up-right"  data-aos-once="false"  class="text-muted erco"> Più scoprivo me e quello che mi stava attorno e più mi interessavano le problematiche e le domande che si ponevano gli altri, cercavo di sentire, percepire e ascoltare. </p> <p data-aos="fade-up-right"  data-aos-once="false"  class="text-muted">Questo mi ha portato a riscoprire una forte predisposizione all'ascolto degli altri.  Per la verità mi piacerebbe anche a volte essere ascolta, ma aimè devo essere noiosa perchè non ho mai trovato un grande pubblico. </p>
                         </div>
                     </li>
 
@@ -441,7 +503,7 @@
                                             <class class="list-inline">
                                                 <li> <b> Costo</b>: Offerta libera</li>
                                                 <li> <b> Durata</b>: 5-10 minuti veloce / 30-60 minuti completo </li>
-                                                <li><b>Modalità</b>: Presenza o a Distanza</li>
+                                                <li><b>Modalità</b>: Presenza / Distanza (necessaria foto del viso)</li>
                                             </class>
                                             </br>
                                             <p>Il reiki è una tecnica giapponese che permette in modo semplice e naturale di riportare in equilibrio l'energia vitale dell'individuo con l'energia dell'Universo. Il Reiki è un metodo di guaridigione e di benessere che agisce sul piano fisico,mentale emozionale e spirituale. Agisce sui blocchi energetici che determinano l'insorgere di un disagio psicologico o emozionale, aiuta la guarigione, purifica l'organismo da sostanze tossiche e riequilibra i centri energetici (chakra)</p> 
@@ -458,7 +520,7 @@
                                                 <p></p>
                                                 <p></p>
                                     </class>                       
-                                        <p class="verbo"><b>N.B</b> <u>È una tecnica complementare alla medicina tradizionale, NON la sostituisce</u></p>
+                                        <p class="verbo"><b>N.B</b> <u>  NON sostituisce la medicina tradizionale</u></p>
                                                 </class>
                                                                         </ul>
                                     <button class="btn btn-primary" data-dismiss="modal" type="button">
@@ -493,7 +555,7 @@
                                             <ul class="list-inline">
                                                 <li> <b>Costo</b>: Offerta libera </li>
                                                 <li><b>Tempo</b>: 5 minuti veloce / 10 minuti equilibrio del sistema</li>
-                                                <li><b>Modalità</b>: Presenza o a Distanza</li>
+                                                <li><b>Modalità</b>: Presenza / Distanza (necessaria foto del viso) </li>
                                             </ul>
                                             <p>Tecnica energetica similare al Reiki che agisce stimolando in presenza o a distanza alcuni centri vitali che sono posizionati sulla testa e lungo la spina dorsale. Ciascuno di questi punti è collegato a specifici organi e sistemi del nostro corpo attraverso il sistema nervoso (Chakra). E' veloce, naturale ed universalmente applicabile e agisce sui 3 pilastri fondamentali del corpo: Sistema immunitario, nervoso e sanguigno.
                                                 
@@ -523,7 +585,7 @@
                                             
                                                 </ul>
                                             </ul>       
-                                                <p class="verbo"><b>N.B</b> <u>È una tecnica complementare alla medicina tradizionale, NON la sostituisce</u></p>
+                                            <p class="verbo"><b>N.B</b> <u>  NON sostituisce la medicina tradizionale</u></p>
                                         </class>
                                     <button class="btn btn-primary" data-dismiss="modal" type="button">
                                         <i class="fas fa-times mr-1"></i>
@@ -556,7 +618,7 @@
                                     <ul class="list-inline">
                                         <li> <b> Costo</b>: Offerta libera</li>
                                         <li> <b> Durata</b>: 3 giorni</li>
-                                        <li><b>Modalità</b>: Presenza o a Distanza (foto necessaria)</li>
+                                        <li><b>Modalità</b>: Presenza / Distanza (foto necessaria)</li>
 
                                         
                                     </ul>
@@ -573,7 +635,7 @@
                                         
                                             </ul>
                                         </ul>    
-                                        <p class="verbo"><b>N.B</b> <u>È una tecnica complementare alla medicina tradizionale, NON la sostituisce</u></p>
+                                        <p class="verbo"><b>N.B</b> <u>  NON sostituisce la medicina tradizionale</u></p>
                         </class>            
                                     <button class="btn btn-primary" data-dismiss="modal" type="button">
                                         <i class="fas fa-times mr-1"></i>
@@ -606,9 +668,11 @@
                                     <class class="sapone">
    
                                                 <ul class="list-inline">
-                                                <li> <b> Costo</b>: Offerta libera</li>
-                                                <li>Category: Branding</li>
+                                                <li> <b>Costo</b>: Offerta libera da concordare</li>
+                                                            <li> <b>Modalità</b>: Distanza / Presenza</li>
+                                                            <li> <b>Domande</b>: 2 al dì </li>
                                             </ul>
+                                        
                                             <p>Le Sibille, chiamate anche sibille chiacchierine o carte della conversazione, sono delle carte da divinazione che si distinguono dalle altre carte perché hanno una grafica intuitiva, colorata e ricca di significati. Aiutano a sciogliere qualsiasi incertezza, riuscendo ad analizzare in modo dettagliato diverse situazioni.
                                             </p> <p>Situazioni possibili: economiche, amicizia, amore, lavoro, tradimenti, sentimenti, ecc. . . </p> 
                                                 
@@ -646,9 +710,12 @@
                                         <class class="sapone">
                 
                                                             <ul class="list-inline">
-                                                            <li> <b>Costo</b>: Offerta libera</li>
-                                                            <li>Client: Southwest</li>
-                                                            <li>Category: Website Design</li>
+                                                            <li> <b>Costo</b>: Offerta libera da concordare</li>
+                                                            <li> <b>Modalità</b>: Distanza / Presenza</li>
+                                                            <li> <b>Domande</b>: 2 al dì </li>
+
+
+                                                         
                                                         </ul>
 
                                                             
@@ -664,7 +731,7 @@
                                                             Chiudi sezione
                                                         </button>
                                         </class>                    
-                                </div>>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -692,9 +759,11 @@
 
                                         <class class="sapone"> 
                                             <ul class="list-inline">
-                                                <li>Costo: January 2020</li>
-                                                <li>Client: Window</li>
-                                                <li>Category: Photography</li>
+                                                <li> <b>Costo</b>: Offerta libera da concordare</li>
+                                                <li> <b>Modalità</b>: Distanza / Presenza</li>
+                                                <li> <b>Domande</b>: 2 al dì </li>
+
+
                                             </ul>
                                             <br>I ching sono l’oracolo più antico proveniente dalla civiltà cinese a cui è possibile rivolgere delle domande per ricevere delle indicazioni riguardo i comportamenti da tenere in tutte le situazione della vita: amore, lavoro e così via. La specialità sta nel suo linguaggio simbolico e nel fatto che non predice il futuro come pretendono di fare i tarocchi, la cartomanzia perché alla base dell’ I Ching vi è il mutamento. </br>Offrono uno strumento per comprendere al meglio cosa potrebbe capitare se la situazione continuasse ad essere sempre la stessa o cosa potrebbe accadere se la situazione si muovesse. </p>
                                             
@@ -726,11 +795,11 @@
         <!-- Core theme JS-->
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script>
-            AOS.init( {
-               once:false});
+            AOS . init () ;
           </script>
                   <script src="js/scripts.js"></script>
 
+                 
                 
     </body>
 </html>
